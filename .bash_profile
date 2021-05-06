@@ -61,7 +61,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 source /Users/utilisateur/.config/broot/launcher/bash/br
 
-export PS1='\[$(tput setaf 10)\]\u:\[$(tput setaf 11)\]\W\[$(tput sgr0)\] \n$ '
+export PS1='\[$(tput setaf 10)\]\u@\h:\[$(tput setaf 11)\]\W\[$(tput sgr0)\] \n$ '
 
 neofetch
 
