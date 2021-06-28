@@ -1,3 +1,8 @@
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
 # Homebrew
 export PATH=/usr/local/bin:$PATH
 
@@ -28,13 +33,25 @@ alias ....="cd ../../.."
 alias cl=clear
 alias v=vim
 alias mv="mv -i"
+alias sl=ls
+alias pyhelp='~/.pyhelp.sh'
+
+# Avoid duplicates
+HISTCONTROL=ignoredups:erasedups
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+export HISTIGNORE="ls:cl:clear:history"
 
 # Add Environment variable for the Sisyphus Project
 export SECRET_KEY='ec9c5159e3964b036448edc99549a8'
 export SQLALCHEMY_DATABASE_URI='sqlite:///site.db'
 
 # Add Environment variable for postgres 
-export PSQLPath='/usr/local/Cellar/postgresql/13.1/bin'
+export PSQLPath='/usr/local/Cellar/postgresql/13.3/bin'
 
 # Add Environment variable for apache drill
 alias drill-embedded="sudo /usr/local/apache-drill-1.17.0/bin/drill-embedded"
@@ -63,8 +80,6 @@ source /Users/utilisateur/.config/broot/launcher/bash/br
 
 export PS1='\[$(tput setaf 10)\]\u@\h:\[$(tput setaf 11)\]\W\[$(tput sgr0)\] \n$ '
 
-neofetch
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -80,7 +95,7 @@ function mkcd
 }
 
 alias volatility='vol.py'
-alias smt_z3=~/.smt_solvers/z3/z3-4.8.7-x64-osx-10.14.6/bin/z3
+alias smt_z3='~/.smt_solvers/z3/z3-4.8.7-x64-osx-10.14.6/bin/z3'
 alias jup='jupyter notebook'
 export picosat='/Users/utilisateur/Desktop/IP/ERLM/PracticalWorks/SAT/td3/picosat-965/picosat'
 
@@ -89,3 +104,8 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
+
+if ! [ -n "$TMUX" ]; then neofetch; fi
+
+source ~/dotfiles/.tmux_env
+

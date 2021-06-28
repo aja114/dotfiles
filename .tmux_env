@@ -1,0 +1,26 @@
+session_name=sesh
+window_name=tmux_env
+window=${session}:${window_name}
+pane0=${window}.0
+pane1=${window}.1
+pane2=${window}.2
+
+tmux has-session -t "$session_name" 2>/dev/null
+sesh_exist=$?
+
+if  ! [[ -n "$TMUX"  ||  $sesh_exist = 0 ]]; then 
+	tmux new -s "$session_name" -n "$window_name" -d
+	tmux split-window -t "$pane0" -h
+	tmux split-window -t "$pane1" -v
+	tmux send-key -t "$pane0" "cl; echo Welcome to your sesh $USER" ENTER
+	tmux send-key -t "$pane1" "cl; ipython" ENTER
+	tmux select-pane -t "$pane0" 
+fi
+
+if  ! [ -n "$TMUX" ]; then 
+
+	echo "Enter your Tmux $session_name ? (y/[n])"
+	read enter
+	if [ "$enter" = "y" ]; then tmux -2 a -t $session_name; fi
+
+fi
