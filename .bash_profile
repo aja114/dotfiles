@@ -9,19 +9,24 @@ export PATH=/usr/local/bin:$PATH
 # Virtualenv/VirtualenvWrapper
 source /usr/local/bin/virtualenvwrapper.sh
 
+# Pyenv vars
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 # added by Anaconda3 5.2.0 installer
 # export PATH="/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 # Setting PATH for Python 3.7
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+# PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export SPARK_HOME=/opt/spark
 export PATH=$SPARK_HOME/bin:$PATH
 export PATH
 
 # Bash Alias 
-alias python=python3
-alias pip=pip3
+#alias python=python3
+#alias pip=pip3
 alias ls='ls -alhG'
 alias rm='rm -vi'
 alias chrome='open -a "Google Chrome"'
@@ -58,17 +63,17 @@ alias drill-embedded="sudo /usr/local/apache-drill-1.17.0/bin/drill-embedded"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/utilisateur/opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/utilisateur/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/utilisateur/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/utilisateur/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/Users/utilisateur/opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/utilisateur/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/utilisateur/opt/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/utilisateur/opt/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 # Add vim as the editing program in all cmd line interactions
@@ -105,7 +110,13 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
-if ! [ -n "$TMUX" ]; then neofetch; fi
+export GOBIN=/usr/local/go/bin
+export GOROOT=/usr/local/go
+export GOPATH="/Users/utilisateur/go"
+export PATH=$PATH:$GOPATH/bin
 
-source ~/dotfiles/.tmux_env
+
+#if ! [ -n "$TMUX" ]; then neofetch; fi
+
+# source ~/dotfiles/.tmux_env
 
