@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Cange the command execution time stamp shown in the history command output.
 HIST_STAMPS="yyyy-mm-dd"
@@ -49,9 +49,6 @@ source ~/dotfiles/alias.sh
 
 export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR='vim'
-
-# Powerlevel10k
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # History personalisation
 setopt INC_APPEND_HISTORY
