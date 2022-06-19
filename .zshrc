@@ -40,10 +40,19 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Extensions
+# Add personal commands
 
-source ~/dotfiles/alias.sh
-# fpath+=~/dotfiles/zshfunctions
+source $HOME/dotfiles/alias.sh
+fpath=( $HOME/dotfiles/.zshfunc "${fpath[@]}")
+autoload -Uz cleansc
+
+# Completion configuration from http://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b"
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
 
 # User configuration
 

@@ -1,0 +1,4 @@
+cleansc(){
+    clear
+    cd
+}
