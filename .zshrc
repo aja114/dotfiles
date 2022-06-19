@@ -23,18 +23,6 @@ HIST_STAMPS="yyyy-mm-dd"
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 15
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
