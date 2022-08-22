@@ -54,10 +54,6 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 
-# Autocorrection
-setopt CORRECT
-setopt CORRECT_ALL
-
 # Pyenv vars
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

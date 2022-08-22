@@ -1,6 +1,4 @@
 # Bash Alias
-#alias python=python3
-#alias pip=pip3
 alias ls='ls -alhG'
 alias rm='rm -vi'
 alias chrome='open -a "Google Chrome"'
@@ -14,4 +12,5 @@ alias v=vim
 alias mv="mv -i"
 alias sl=ls
 alias pyhelp='~/.pyhelp.sh'
+alias p="python"
 
