@@ -24,7 +24,10 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 15
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git
+    vi-mode
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,7 +48,10 @@ zstyle ':completion:*' group-name ''
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
+
+# Enable vi mode
 export EDITOR='vim'
+bindkey -v
 
 # History personalisation
 setopt INC_APPEND_HISTORY

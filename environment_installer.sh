@@ -11,4 +11,5 @@ fi
 # Add the config 
 echo "source $HOME/dotfiles/.zshrc" > $HOME/.zshrc
 
-
+# Add the remaining dotfiles to $home
+cp .gitignore_global $HOME/
