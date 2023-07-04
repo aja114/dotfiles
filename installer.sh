@@ -8,8 +8,5 @@ if [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ]; then
 fi
 
 
-# Add the config 
-echo "source $HOME/dotfiles/.zshrc" > $HOME/.zshrc
-
-# Add the remaining dotfiles to $home
-cp .gitignore_global $HOME/
+# Add all the configs files to $home
+cp configs/* $HOME/
