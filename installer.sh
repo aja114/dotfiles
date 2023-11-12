@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 ZSH_HOME=${ZSH_CUSTOM:-$HOME/.oh-my-zsh}
 
@@ -15,10 +15,10 @@ fi
 
 # install zsh plugins
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_HOME}/plugins/zsh-autocomplete
-
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
 
 # Add all the configs files to $home
-cp configs/* $HOME/
+cp -a configs/. $HOME/
 
 # Add the script files to $home
 cp -r scripts $HOME/scripts
