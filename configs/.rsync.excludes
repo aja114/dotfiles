@@ -1,0 +1,12 @@
+.DS_Store
+.git
+*env/
+*venv/
+*.ipynb*
+*.idea*
+*.docx
+*.xlsx
+*.pytest_cache
+*__pycache__*
+*.mypy_cache
+*.ruff_cache
