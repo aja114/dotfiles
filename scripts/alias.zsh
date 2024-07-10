@@ -7,8 +7,8 @@ alias mv="mv -i"
 alias ccat="pygmentize -g -O style=gruvbox-dark"
 alias pytest_debug="pytest -o log_cli=true -o log_cli_level=DEBUG"
 alias vbm="VBoxManage"
-alias rsync="rsync --exclude-from=$HOME/dotfiles/.rsync.excludes"
-alias rsyncdry="rsync --dry-run"
+alias rsync="rsync --exclude-from=$HOME/.rsync.excludes"
+alias rsyncdry="rsync --exclude-from=$HOME/.rsync.excludes --dry-run"
 alias jlab="jupyter-lab"
 alias v='nvim'
 alias s='ssh'

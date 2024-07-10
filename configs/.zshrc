@@ -7,11 +7,6 @@ for script in "${DOTFILES}"/scripts/*(.); do
     fi
 done
 
-# Activate pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
 zmodload zsh/zprof
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -73,20 +68,6 @@ zstyle ':completion:*' group-name ''
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Some extra prompt commands
-function p10k-on-pre-prompt() {
-  # Script to show the python version on the prompt of the virtual env when activated and not the global pyenv
-  if [[ -z $VIRTUAL_ENV ]]; then
-    p10k display '1/right/pyenv'=show
-  else
-    p10k display '1/right/pyenv'=hide
-  fi
-
-  if [[ $(hostname) == de01mmaa033.* ]]; then
-    p10k display '1/left/context'=hide
-  fi
-}
 
 # Add zoxide command to easily switch directories
 eval "$(zoxide init zsh)"
