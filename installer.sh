@@ -26,6 +26,7 @@ add-zsh-plugin https://github.com/zsh-users/zsh-autosuggestions
 add-zsh-plugin https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # Symlink all the configs files to $HOME
-find $DOTFILES/configs -type f | xargs -I conf sh -c 'ln -s conf $HOME/$(basename conf)'
+find $DOTFILES/configs -type f | xargs -I conf sh -c 'ln -sf conf $HOME/$(basename conf)'
 
-
+# Remove login message from iterm
+touch $HOME/.hushlogin
