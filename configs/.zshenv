@@ -12,5 +12,8 @@ export NVM_LAZY_LOAD=true
 # set python debugger to ipdb
 export PYTHONBREAKPOINT=ipdb.set_trace
 
+# Only allow pip to install in venv
+export PIP_REQUIRE_VIRTUALENV=true
+
 # Increase the git auto fetch minimum
 export GIT_AUTO_FETCH_INTERVAL=600

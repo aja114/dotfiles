@@ -1,8 +1,13 @@
 source $HOME/.bash_profile
-source $DOTFILES/.aliases.zsh
+source $DOTFILES/.alias.zsh
 source $DOTFILES/.keybindings.zsh
 source $DOTFILES/.history.zsh
 source $DOTFILES/.func.zsh
+
+# Activate pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
 zmodload zsh/zprof
 
@@ -39,7 +44,6 @@ zsh-syntax-highlighting
 autoswitch_virtualenv
 git-auto-fetch
 pyenv
-zsh-nvm
 docker
 )
 
@@ -91,7 +95,7 @@ eval "$(zoxide init zsh)"
 export PATH="$PATH:$HOME/.local/bin"
 
 # add br command line tool
-source $HOME/.config/broot/launcher/bash/br
+#source $HOME/.config/broot/launcher/bash/br
 
 # This loads nvm but we don't want to do this at start time
 #export NVM_DIR="$HOME/.nvm"
