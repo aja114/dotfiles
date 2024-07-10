@@ -12,7 +12,7 @@ brew list --version --verbose
 echo "Currently installed graphical packages"
 brew list --cask --version --verbose
 
-cli=(bat zoxide tldr fzf jq rsync exa gh duf nvm)
+cli=(bat zoxide tldr fzf jq rsync exa gh duf nvm tree)
 cliopt=(scc diff-so-fancy hyperfine ctop dog)
 python=(pyenv pipx)
 others=(goenv node)
