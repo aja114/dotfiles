@@ -95,11 +95,11 @@ eval "$(zoxide init zsh)"
 export PATH="$PATH:$HOME/.local/bin"
 
 # add br command line tool
-#source $HOME/.config/broot/launcher/bash/br
+# source $HOME/.config/broot/launcher/bash/br
 
 # This loads nvm but we don't want to do this at start time
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 
 # increase the limit on the number of files open on mac os
 ulimit -n 10240
