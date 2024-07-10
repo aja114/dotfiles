@@ -30,3 +30,6 @@ find $DOTFILES/configs -type f | xargs -I conf sh -c 'ln -sf conf $HOME/$(basena
 
 # Remove login message from iterm
 touch $HOME/.hushlogin
+
+# Run the macOS default settings
+sh $DOTFILES/mac_default.sh

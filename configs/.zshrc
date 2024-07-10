@@ -1,8 +1,11 @@
 source $HOME/.bash_profile
-source $DOTFILES/.alias.zsh
-source $DOTFILES/.keybindings.zsh
-source $DOTFILES/.history.zsh
-source $DOTFILES/.func.zsh
+
+# Source all the scripts from our dotfiles
+for script in "${DOTFILES}"/scripts/*(.); do
+    if [ -f "$script" ]; then
+        source "$script"
+    fi
+done
 
 # Activate pyenv
 export PYENV_ROOT="$HOME/.pyenv"
