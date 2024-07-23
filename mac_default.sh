@@ -5,7 +5,7 @@ set +e
 
 disable_agent() {
 	mv "$1" "$1_DISABLED" >/dev/null 2>&1 ||
-		sudo mv "$1" "$1_DISABLED" >/dev/null 2>&1
+	sudo mv "$1" "$1_DISABLED" >/dev/null 2>&1
 }
 
 unload_agent() {
@@ -17,3 +17,6 @@ echo "  › Disable iTunes helper"
 disable_agent /Applications/iTunes.app/Contents/MacOS/iTunesHelper.app
 echo "  › Prevent play button from launching iTunes"
 unload_agent /System/Library/LaunchAgents/com.apple.rcd.plist
+
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -boolean true
