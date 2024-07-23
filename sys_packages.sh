@@ -16,6 +16,7 @@ cli=(bat zoxide tldr fzf jq rsync exa gh duf nvm tree)
 cliopt=(scc diff-so-fancy hyperfine ctop dog)
 python=(pyenv pipx)
 others=(goenv node)
+casks=(notion)
 
 allowedcoms=(install uninstall reinstall upgrade)
 brewcom=$1   
@@ -43,7 +44,9 @@ while [[ ! -z $1 ]]; do
   if [[ $1 == --others ]]; then
     brew $brewcom ${others[@]}
   fi
-
+  if [[ $1 == --casks ]]; then
+    brew $brewcom --cask ${casks[@]}
+  fi 
   shift 
 done
   
