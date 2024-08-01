@@ -16,7 +16,7 @@ cli=(bat zoxide tldr fzf jq rsync exa gh duf nvm tree)
 cliopt=(scc diff-so-fancy hyperfine ctop dog)
 python=(pyenv pipx)
 others=(goenv node)
-casks=(notion)
+casks=(notion maccy)
 
 allowedcoms=(install uninstall reinstall upgrade)
 brewcom=$1   

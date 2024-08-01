@@ -15,8 +15,19 @@ unload_agent() {
 # Remove itunes player
 echo "  › Disable iTunes helper"
 disable_agent /Applications/iTunes.app/Contents/MacOS/iTunesHelper.app
+
 echo "  › Prevent play button from launching iTunes"
 unload_agent /System/Library/LaunchAgents/com.apple.rcd.plist
 
-# Finder: show hidden files by default
+echo "  › show hidden files by default in Finder"
 defaults write com.apple.finder AppleShowAllFiles -boolean true
+
+echo "  › show battery percent"
+defaults write com.apple.menuextra.battery ShowPercent -bool true
+
+echo "  › Set dark interface style"
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+echo "  › Save to disk by default, instead of iCloud"
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
