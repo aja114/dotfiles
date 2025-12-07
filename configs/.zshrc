@@ -33,6 +33,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load?
 plugins=(
 zsh-autosuggestions
+terraform
 git
 vi-mode
 macos
@@ -41,7 +42,7 @@ fzf
 zsh-syntax-highlighting
 autoswitch_virtualenv
 git-auto-fetch
-pyenv
+kubectl
 docker
 )
 

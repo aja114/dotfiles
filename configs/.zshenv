@@ -11,3 +11,5 @@ export NVM_LAZY_LOAD=true
 
 # Increase the git auto fetch minimum
 export GIT_AUTO_FETCH_INTERVAL=600
+
+
