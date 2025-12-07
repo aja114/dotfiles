@@ -106,3 +106,9 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+
+" Solving slow typescript loading
+syntax on
+" Use new regular expression engine
+set re=0
+

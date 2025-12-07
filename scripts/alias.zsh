@@ -15,3 +15,7 @@ alias s='ssh'
 alias pt='pytest'
 alias pcall='pre-commit run --all-files'
 alias reloadsh='exec "$SHELL" -l'
+alias gt="git for-each-ref --sort=creatordate --format '%(refname) %(creatordate)' refs/tags | sed 's/refs\/tags\///' | tail"
+alias kswitch="kubectl config use-context"
+alias cat1line='awk '\''{printf "%s\\\\n", $0} END {print ""}'\'' '
+alias gbda="git branch | grep -v 'main' | xargs git branch -D"

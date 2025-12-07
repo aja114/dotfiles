@@ -1,4 +1,5 @@
-source $HOME/.bash_profile
+# Add homebrew to the path
+export PATH="/opt/homebrew/bin:$PATH"
 
 # Source all the scripts from our dotfiles
 for script in "${DOTFILES}"/scripts/*(.); do
@@ -36,14 +37,17 @@ zsh-autosuggestions
 terraform
 git
 vi-mode
-macos
-sudo
 fzf
 zsh-syntax-highlighting
 autoswitch_virtualenv
 git-auto-fetch
 kubectl
 docker
+kubectl
+helm
+gh
+invoke
+uv
 )
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=100"
@@ -76,12 +80,6 @@ eval "$(zoxide init zsh)"
 # activate fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Created by `pipx` on 2021-10-15 15:45:40
-export PATH="$PATH:$HOME/.local/bin"
-
-# add br command line tool
-# source $HOME/.config/broot/launcher/bash/br
-
 # This loads nvm but we don't want to do this at start time
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
@@ -90,3 +88,28 @@ export NVM_DIR="$HOME/.nvm"
 ulimit -n 10240
 
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2024-09-19 09:33:55
+export PATH="$PATH:/Users/alexandre.abouchahine/.local/bin"
+
+# pnpm
+export PNPM_HOME="/Users/alexandre.abouchahine/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/Users/alexandre.abouchahine/.bun/_bun" ] && source "/Users/alexandre.abouchahine/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# releease the kraken
+source /Users/alexandre.abouchahine/codebases/release-the-kraken/.env.release-the-kraken
+alias tailscale=/Applications/Tailscale.app/Contents/MacOS/Tailscale
+
+# add secretive agent
+export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"

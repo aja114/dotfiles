@@ -6,8 +6,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH=$(pyenv root)/shims:$PATH
 
 # poetry setup
-export "PATH=$HOME/.poetry/bin:$PATH"
-
+export PATH="$HOME/Library/Application Support/pypoetry/venv/bin:$PATH"
 # Tell python not to generate pyc files
 export PYTHONDONTWRITEBYTECODE=1
 

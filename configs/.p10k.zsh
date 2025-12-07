@@ -1411,7 +1411,7 @@
 
   # POWERLEVEL9K_AWS_CLASSES is an array with even number of elements. The first element
   # in each pair defines a pattern against which the current AWS profile gets matched.
-  # More specifically, it's P9K_CONTENT prior to the application of context expansion (see below)
+  # More specifically, it's P9K_CONTENT prior to the application of c[Oontext expansion (see below)
   # that gets matched. If you unset all POWERLEVEL9K_AWS_*CONTENT_EXPANSION parameters,
   # you'll see this value in your prompt. The second element of each pair in
   # POWERLEVEL9K_AWS_CLASSES defines the profile class. Patterns are tried in order. The
