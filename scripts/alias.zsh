@@ -1,6 +1,6 @@
 alias clear="printf '\33c\e[3J'"
 alias cl=clear
-alias ls="ls -AlG"
+alias ls="ls -AlGt"
 alias sl=ls
 alias rm="rm -vi"
 alias mv="mv -i"

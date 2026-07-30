@@ -1,6 +1,7 @@
 [user]
 	name = AlexAC
 	email = alexandreabouchahine@gmail.com
+    signingkey = /Users/alexandreabouchahine/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/842526d0cb1ee13e5403bd58fff7088e.pub
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -22,3 +23,9 @@
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[commit]
+    gpgsign = true
+[gpg]
+    format = ssh
+[gpg "ssh"]
+    allowedSignersFile = ~/.gitallowedsigners

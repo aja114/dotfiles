@@ -48,10 +48,6 @@ function p10k-on-pre-prompt() {
   fi
 }
 
-# Function to tunnel to harmattan with GPU node
-function hmt-tunnel() {
-    kubectl --context tailscale-operator-k8s-stag-swedencentral.cheetah-koi.ts.net -n vortex port-forward pod/mistral-7b-h100-gpu-79db4dbd68-4g99v ${1}:8080
-}
 
 # Grep through pods
 function grepods(){
@@ -91,25 +87,6 @@ function diff-subdir(){
   git log --oneline --decorate --graph $REF1 $REF2 -- $SUBDIR
 }
 
-# show what is in recipe at a certain version
-show-recipe() {
-    local tag=$1
-    local model_name=$2
-
-    # Check if both arguments are provided
-    if [[ -z "$tag" || -z "$model_name" ]]; then
-        echo "Usage: show_recipe <tag> <model_name>"
-        return 1
-    fi
-
-    # Run the git show command
-    git show "recipes/${tag}:model-delivery/recipes/${model_name}.yaml" | cat
-}
-
-# Show all recipe versions
-show-recipe-version(){
-	git for-each-ref --sort=creatordate --format '%(refname) %(creatordate)' refs/tags | sed 's/refs\/tags\///' | grep recipes/
-}
 
 ksecret(){
   cat | jq ".data.$1 | @base64d"
@@ -151,4 +128,17 @@ git_copy_branch_to() {
   git push  --set-upstream origin $1
   git checkout main
   popd
+} 
+
+function brewcheck() {
+  local brewfile="${1:-$HOME/dotfiles/Brewfile}"
+  local RED='\033[0;31m'
+  local GREEN='\033[0;32m'
+  local NC='\033[0m' # No Color
+
+  if brew bundle check --no-upgrade --file="$brewfile" &> /dev/null; then
+    echo -e "${GREEN}✅ Brewfile is in sync — all dependencies installed.${NC}"
+  else
+    echo -e "${RED}⚠️  Brewfile out of sync — run 'brew bundle dump --force --describe --file=$brewfile'${NC}"
+  fi
 }

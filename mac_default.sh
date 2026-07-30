@@ -12,9 +12,6 @@ unload_agent() {
 	launchctl unload -w "$1" >/dev/null 2>&1
 }
 
-echo "  › Prevent play button from launching iTunes"
-unload_agent /System/Library/LaunchAgents/com.apple.rcd.plist
-
 echo "  › Show hidden files by default in Finder"
 defaults write com.apple.finder AppleShowAllFiles -boolean true
 
