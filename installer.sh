@@ -21,20 +21,24 @@ __dotfile_section_header "Zsh Configuration" 2 4
 ZSH_HOME=${ZSH_CUSTOM:-$HOME/.oh-my-zsh}
 ZSH_CUSTOM=${ZSH_HOME}/custom
 
-if [ ! -d ${ZSH_HOME} ]; then
+if [ -d ${ZSH_HOME} ]; then
+    __dotfile_info "Updating oh-my-zsh"
+    cd ${ZSH_HOME} && git pull
+    __dotfile_success "oh-my-zsh updated"
+else
     __dotfile_info "Installing oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     __dotfile_success "oh-my-zsh installed"
-else
-    __dotfile_skip "oh-my-zsh (already installed)"
 fi
 
-if [ ! -d ${ZSH_HOME}/custom/themes/powerlevel10k ]; then
+if [ -d ${ZSH_HOME}/custom/themes/powerlevel10k ]; then
+    __dotfile_info "Updating powerlevel10k"
+    cd ${ZSH_HOME}/custom/themes/powerlevel10k && git pull
+    __dotfile_success "powerlevel10k updated"
+else
     __dotfile_info "Installing powerlevel10k"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_HOME}/custom/themes/powerlevel10k
     __dotfile_success "powerlevel10k installed"
-else
-    __dotfile_skip "powerlevel10k (already installed)"
 fi
 
 __dotfile_info "Setting up zsh plugins"

@@ -35,7 +35,7 @@ rm-dry(){
 }
 
 # Some extra prompt commands
-function p10k-on-pre-prompt() {
+p10k-on-pre-prompt() {
   # Script to show the python version on the prompt of the virtual env when activated and not the global pyenv
   if [[ -z $VIRTUAL_ENV ]]; then
     p10k display '1/right/pyenv'=show
@@ -50,13 +50,13 @@ function p10k-on-pre-prompt() {
 
 
 # Grep through pods
-function grepods(){
+grepods(){
     podName=${1}
     shift
     kubectl get pods "${@}" | grep ${podName} --color=always
 }
 
-function tag-subdir(){
+tag-subdir(){
   SUBDIR=$1
   ALL_TAGS=$2
   
@@ -79,7 +79,7 @@ function tag-subdir(){
   done
 }
 
-function diff-subdir(){
+diff-subdir(){
   REF1=$1
   REF2=$2
   SUBDIR=$3
@@ -130,7 +130,7 @@ git_copy_branch_to() {
   popd
 } 
 
-function brewcheck() {
+brewcheck() {
   local brewfile="${1:-$HOME/dotfiles/Brewfile}"
   local __dotfile_red='\033[0;31m'
   local __dotfile_green='\033[0;32m'
