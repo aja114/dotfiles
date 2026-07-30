@@ -132,13 +132,23 @@ git_copy_branch_to() {
 
 function brewcheck() {
   local brewfile="${1:-$HOME/dotfiles/Brewfile}"
-  local RED='\033[0;31m'
-  local GREEN='\033[0;32m'
-  local NC='\033[0m' # No Color
+  local __dotfile_red='\033[0;31m'
+  local __dotfile_green='\033[0;32m'
+  local __dotfile_nc='\033[0m'
 
   if brew bundle check --no-upgrade --file="$brewfile" &> /dev/null; then
-    echo -e "${GREEN}✅ Brewfile is in sync — all dependencies installed.${NC}"
+    echo -e "${__dotfile_green}✅ Brewfile is in sync — all dependencies installed.${__dotfile_nc}"
   else
-    echo -e "${RED}⚠️  Brewfile out of sync — run 'brew bundle dump --force --describe --file=$brewfile'${NC}"
+    echo -e "${__dotfile_red}⚠️  Brewfile out of sync — run 'brew bundle dump --force --describe --file=$brewfile'${__dotfile_nc}"
   fi
 }
+
+# Update Brewfile with currently installed packages
+brewdump() {
+  local __dotfile_green='\033[0;32m'
+  local __dotfile_nc='\033[0m'
+  brew bundle dump --force --file "$HOME/dotfiles/Brewfile" --taps --casks --formulae
+  echo -e "${__dotfile_green}✅ Brewfile updated successfully!${__dotfile_nc}"
+}
+
+

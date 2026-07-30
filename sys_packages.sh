@@ -1,15 +1,18 @@
 #!/bin/bash
-set -ex 
+set -ex
 
-NONINTERACTIVE=1 
+DOTFILES=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+source "$DOTFILES/utils.zsh"
 
-# Update brew 
+NONINTERACTIVE=1
+
+# Update brew
 #brew update && brew doctor
 
-echo "Currently installed packages"
+echo -e "${__dotfile_cyan}Currently installed packages${__dotfile_nc}"
 brew list --version --verbose
 
-echo "Currently installed graphical packages"
+echo -e "${__dotfile_cyan}Currently installed graphical packages${__dotfile_nc}"
 brew list --cask --version --verbose
 
 cli=(bat zoxide tldr fzf jq rsync exa gh duf nvm tree)

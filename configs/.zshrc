@@ -70,6 +70,8 @@ zstyle ':completion:*' group-name ''
 eval "$(zoxide init zsh)"
 
 
+# Init goenv
+export GOENV_PATH_ORDER=back
 export PATH="/opt/homebrew/opt/goenv/bin:$PATH"
 eval "$(goenv init -)"
 
@@ -98,4 +100,4 @@ ulimit -n 10240
 
 
 # add secretive agent
-export SSH_AUTH_SOCK="$HOME/Library/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"

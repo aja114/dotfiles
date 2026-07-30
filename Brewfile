@@ -15,10 +15,6 @@ brew "fzf"
 brew "libtiff"
 # GitHub command-line tool
 brew "gh"
-# OpenGL Extension Wrangler Library
-brew "glew"
-# Multi-platform library for OpenGL applications
-brew "glfw"
 # Go version management
 brew "goenv"
 # Framework for layout and rendering of i18n text
@@ -83,13 +79,3 @@ cask "rectangle"
 cask "secretive"
 # Video communication and virtual meeting platform
 cask "zoom"
-vscode "anysphere.cursorpyright"
-vscode "bradlc.vscode-tailwindcss"
-vscode "golang.go"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.jupyter-keymap"
-vscode "ms-toolsai.jupyter-renderers"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
