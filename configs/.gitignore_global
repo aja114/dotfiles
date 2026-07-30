@@ -2,9 +2,9 @@
 *__pycache__
 *.ipynb_checkpoints
 *.idea
-*env*
-*venv*
-*.venv*
+*/env*
+*/venv*
+*/.venv*
 *.env*
 *.ipynb*
 *.idea*
