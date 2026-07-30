@@ -12,4 +12,11 @@ export NVM_LAZY_LOAD=true
 # Increase the git auto fetch minimum
 export GIT_AUTO_FETCH_INTERVAL=600
 
+# brew shellenv - MUST be in .zshenv (not .zshrc) so it's available
+# to all shells, including non-interactive scripts and cron jobs
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Source local environment variables if they exist
+[ -f "$HOME/.zshenv.local" ] && source "$HOME/.zshenv.local"
+
 
