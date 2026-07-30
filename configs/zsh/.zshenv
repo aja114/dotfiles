@@ -12,6 +12,12 @@ export NVM_LAZY_LOAD=true
 # Increase the git auto fetch minimum
 export GIT_AUTO_FETCH_INTERVAL=600
 
+# Editor
+export EDITOR='vim'
+
+# PATH additions (always append, not prepend)
+export PATH="$PATH:$HOME/.local/bin"
+
 # brew shellenv - MUST be in .zshenv (not .zshrc) so it's available
 # to all shells, including non-interactive scripts and cron jobs
 eval "$(/opt/homebrew/bin/brew shellenv)"

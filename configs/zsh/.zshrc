@@ -1,6 +1,3 @@
-# Add homebrew to the path
-export PATH="/opt/homebrew/bin:$PATH"
-
 zmodload zsh/zprof
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -9,9 +6,6 @@ zmodload zsh/zprof
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -49,9 +43,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Preferred editor for local and remote sessions
-export EDITOR='vim'
-
 # Add vim as the editing program in all cmd line interactions
 set -o vi
 
@@ -71,8 +62,6 @@ eval "$(zoxide init zsh)"
 
 
 # Init goenv
-export GOENV_PATH_ORDER=back
-export PATH="/opt/homebrew/opt/goenv/bin:$PATH"
 eval "$(goenv init -)"
 
 # activate fzf
@@ -86,18 +75,7 @@ for script in "${DOTFILES}"/scripts/*(.); do
 done
 
 
-# Created by `pipx` on 2021-10-15 15:45:40
-export PATH="$PATH:$HOME/.local/bin"
-
-# This loads nvm but we don't want to do this at start time
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-
 # increase the limit on the number of files open on mac os
 ulimit -n 10240
 
 . "$HOME/.cargo/env"
-
-
-# add secretive agent
-export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
