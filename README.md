@@ -2,57 +2,87 @@
 
 Personal dotfiles for setting up a new machine and keeping configurations in sync.
 
-These configurations are made to work with `zsh` as a shell using `oh-my-zsh` as a the main configuration tool.
+These configurations are made to work with `zsh` as a shell using `oh-my-zsh` as the main configuration tool.
 
 ## Structure
-
-The dotfiles are structured in the following way:
-
-- configs: a set of configuration files which are symlinked to the the home folder.
-- scripts: a set of shell (.zsh in this case) files which are sourced when the shell is starting. It should mainly contain aliases and functions that can be used by the user.
-- installer.sh, sys_packages.sh, utils.sh, mac_defaults.sh: scripts used to perform setup operations.
-- iterm-prof.json: iterm configuration, the easiest is to import it manually into iterm2.
 
 ```
 .
 ├── configs
-│   ├── .gitconfig
-│   ├── .gitignore_global
-│   ├── .p10k.zsh
-│   ├── .python-setup.zsh
-│   ├── .rsync.excludes
-│   ├── .tmux.conf
-│   ├── .tmux_env
-│   ├── .vimrc
-│   ├── .zshenv
-│   ├── .zshrc
-│   └── ipython_config.py
+│   ├── zsh
+│   │   ├── .zshenv          # Environment variables (loaded for ALL shells)
+│   │   ├── .zprofile        # Environment variables (loaded for login shells only)
+│   │   ├── .zshrc           # Interactive shell configuration
+│   │   └── .p10k.zsh        # Powerlevel10k theme config
+│   ├── .gitconfig
+│   ├── .gitignore_global
+│   ├── .rsync.excludes
+│   ├── .tmux.conf
+│   ├── .tmux_env
+│   ├── .vimrc
+│   └── ipython_config.py
 ├── scripts
-│   ├── alias.zsh
-│   ├── func.zsh
-│   ├── history.zsh
-│   └── keybindings.zsh
-├── installer.sh
-├── iterm-prof.json
-├── mac_default.sh
-├── sys_packages.sh
-└── utils.zsh
+│   ├── alias.zsh
+│   ├── func.zsh
+│   ├── history.zsh
+│   └── keybindings.zsh
+├── installer.sh          # Main setup script
+├── mac_default.sh        # macOS default settings
+├── Brewfile              # Homebrew packages
+└── iterm-prof.json       # iTerm2 profile (import manually)
 ```
+
+### Zsh Configuration
+
+Zsh files are organized in the `configs/zsh/` directory:
+
+| File | Purpose | Loaded When |
+|------|---------|-------------|
+| `.zshenv` | Environment variables needed everywhere | All shells (login, non-login, interactive, scripts) |
+| `.zprofile` | Environment variables for login sessions | Login shells only |
+| `.zshrc` | Interactive shell config (aliases, functions, plugins) | Interactive shells only |
+| `.p10k.zsh` | Powerlevel10k theme configuration | Sourced by `.zshrc` |
+
+**Private Environment Variables:**
+- Create `~/.zshenv.local` in your home directory for machine-specific secrets (API keys, etc.)
+- This file is **not** in the repo and won't be committed
+- `.zshenv` automatically sources it if it exists
 
 ## Install
 
-To run the installer simply use the following command.
+To run the installer:
 
-```
+```bash
 cd $DOTFILES
 ./installer.sh
 ```
 
-This might break if some packages are not present. To install the required packages have a look at the `sys_packages.sh` script which has a set of packages that can be installed separately.
+The installer will:
+1. Set up oh-my-zsh and powerlevel10k
+2. Install zsh plugins
+3. Symlink all config files to your home directory
+4. Optionally install system dependencies from Brewfile
+5. Optionally apply macOS default settings
 
-```
-cd $DOTFILES
-./sys_packages.sh install --cli
+### Package Management
+
+System dependencies are managed via `Brewfile`. Available functions:
+
+```bash
+# Dump current packages to Brewfile
+brewdump
+
+# Install packages from Brewfile
+brew bundle --file=$DOTFILES/Brewfile
+
+# Check if Brewfile is in sync with installed packages
+brewcheck
 ```
 
-Other install options are: `python`, `cliopt`, `others`.
+### macOS Settings
+
+To apply macOS defaults:
+
+```bash
+./mac_default.sh
+```

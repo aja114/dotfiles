@@ -7,16 +7,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Set p10k as the oh-my-zsh theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load?
 plugins=(
@@ -43,6 +35,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Disable marking untracked files under VCS as dirty. 
+# This makes repository status check for large repositories much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 # Add vim as the editing program in all cmd line interactions
 set -o vi
 
@@ -59,7 +55,6 @@ zstyle ':completion:*' group-name ''
 
 # Add zoxide command to easily switch directories
 eval "$(zoxide init zsh)"
-
 
 # Init goenv
 eval "$(goenv init -)"
@@ -78,4 +73,5 @@ done
 # increase the limit on the number of files open on mac os
 ulimit -n 10240
 
+# Source cargo env
 . "$HOME/.cargo/env"
