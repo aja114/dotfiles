@@ -18,6 +18,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Which plugins would you like to load?
 plugins=(
 zsh-autosuggestions
+autoswitch_virtualenv
 terraform
 git
 vi-mode
@@ -26,7 +27,6 @@ zsh-syntax-highlighting
 git-auto-fetch
 kubectl
 docker
-kubectl
 helm
 gh
 invoke

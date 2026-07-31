@@ -43,7 +43,9 @@ fi
 
 __dotfile_info "Setting up zsh plugins"
 __dotfile_add_zsh_plugin https://github.com/marlonrichert/zsh-autocomplete.git
-__dotfile_add_zsh_plugin https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git
+# Note: repo name (zsh-autoswitch-virtualenv) differs from the plugin name
+# (autoswitch_virtualenv), so the target directory must be set explicitly
+__dotfile_add_zsh_plugin https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git autoswitch_virtualenv
 __dotfile_add_zsh_plugin https://github.com/zsh-users/zsh-autosuggestions
 __dotfile_add_zsh_plugin https://github.com/zsh-users/zsh-syntax-highlighting.git
 __dotfile_success "zsh plugins configured"

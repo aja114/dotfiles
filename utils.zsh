@@ -67,7 +67,9 @@ __dotfile_skip() {
 # ========================================
 __dotfile_add_zsh_plugin() {
     git_url=$1
-    plugin_name=$(basename -s .git "$git_url")
+    # Optional 2nd arg: plugin directory name (use when the repo name
+    # doesn't match the .plugin.zsh entry file, e.g. zsh-autoswitch-virtualenv)
+    plugin_name=${2:-$(basename -s .git "$git_url")}
     plugin_dest=${ZSH_CUSTOM}/plugins/${plugin_name}
     if [ -d "$plugin_dest" ]; then
         cd "$plugin_dest"
