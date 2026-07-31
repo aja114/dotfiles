@@ -63,6 +63,7 @@ vimcmd_replace_one_symbol = "[λ▶](bold purple)"
 disabled = false
 style = "bold red"
 format = "[$symbol $status]($style) "
+symbol = "X"
 
 [cmd_duration]
 style = "white"
@@ -82,6 +83,10 @@ format = '[$symbol$context( \($namespace\))]($style) '
 [python]
 style = "green"
 format = "[via ${symbol}${version}( $virtualenv)]($style) "
+
+[golang]
+symbol = "GO "
+style = "blue"
 
 [time]
 disabled = false

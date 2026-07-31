@@ -6,7 +6,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 
 # Prompt selection: "starship"  or "p10k" 
-export DOTFILES_PROMPT=-starship
+export DOTFILES_PROMPT=starship
 
 if [[ $DOTFILES_PROMPT == p10k ]]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
