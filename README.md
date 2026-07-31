@@ -2,7 +2,7 @@
 
 Personal dotfiles for setting up a new machine and keeping configurations in sync.
 
-Supports two shells: `zsh` (primary, with `oh-my-zsh` + `powerlevel10k`) and `nushell` (trial). Shared configuration lives in shell-agnostic files consumed by both.
+Supports two shells: `zsh` (primary, with `oh-my-zsh`) and `nushell` (trial). The prompt is [starship](https://starship.rs), shared by both shells via `configs/starship.toml` (zsh can fall back to powerlevel10k via `DOTFILES_PROMPT`). Shared configuration lives in shell-agnostic files consumed by both.
 
 ## Structure
 
@@ -15,7 +15,8 @@ Supports two shells: `zsh` (primary, with `oh-my-zsh` + `powerlevel10k`) and `nu
 │   ├── .tmux.conf
 │   ├── .tmux_env
 │   ├── .vimrc
-│   └── ipython_config.py
+│   ├── ipython_config.py
+│   └── starship.toml       # Prompt shared by zsh + nushell ($STARSHIP_CONFIG in shared/env)
 ├── shared                  # Shell-agnostic config, loaded by both shells
 │   ├── env                 # Environment variables (KEY=value, one per line)
 │   └── paths               # PATH entries (one per line, appended)

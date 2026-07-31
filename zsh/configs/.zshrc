@@ -1,19 +1,18 @@
 # Uncomment to start profiling
 # zmodload zsh/zprof
 
-# Load nvm before p10k so it can detect the version
+# Load nvm early so tools (and the prompt) can detect the version
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Prompt selection: "starship"  or "p10k" 
+export DOTFILES_PROMPT=-starship
 
-# Set p10k as the oh-my-zsh theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [[ $DOTFILES_PROMPT == p10k ]]; then
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+  ZSH_THEME=""
+fi
 
 # Which plugins would you like to load?
 plugins=(
@@ -54,8 +53,14 @@ zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Prompt init, matching $DOTFILES_PROMPT above. Note: the p10k instant-prompt
+# block was removed with the starship switch - restore it from git history if
+# wanted (p10k works without it, just flashes on startup).
+if [[ $DOTFILES_PROMPT == p10k ]]; then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+else
+  eval "$(starship init zsh)"
+fi
 
 # Add zoxide command to easily switch directories
 eval "$(zoxide init zsh)"
