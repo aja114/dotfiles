@@ -2,72 +2,90 @@
 
 Personal dotfiles for setting up a new machine and keeping configurations in sync.
 
-These configurations are made to work with `zsh` as a shell using `oh-my-zsh` as the main configuration tool.
+Supports two shells: `zsh` (primary, with `oh-my-zsh` + `powerlevel10k`) and `nushell` (trial). Shared configuration lives in shell-agnostic files consumed by both.
 
 ## Structure
 
 ```
 .
-├── configs
-│   ├── zsh
-│   │   ├── .zshenv          # Environment variables (loaded for ALL shells)
-│   │   ├── .zprofile        # Environment variables (loaded for login shells only)
-│   │   ├── .zshrc           # Interactive shell configuration
-│   │   └── .p10k.zsh        # Powerlevel10k theme config
-│   ├── .gitconfig
+├── configs                 # Third-party dotfiles → symlinked to ~ by basename
+│   ├── .gitconfig          # Includes ~/.gitconfig.local for machine-specific bits
 │   ├── .gitignore_global
 │   ├── .rsync.excludes
 │   ├── .tmux.conf
 │   ├── .tmux_env
 │   ├── .vimrc
 │   └── ipython_config.py
-├── scripts
-│   ├── alias.zsh
-│   ├── func.zsh
-│   ├── history.zsh
-│   ├── keybindings.zsh
-│   └── python-setup.zsh
-├── installer.sh          # Main setup script
-├── mac_default.sh        # macOS default settings
-├── Brewfile              # Homebrew packages
-└── iterm-prof.json       # iTerm2 profile (import manually)
+├── shared                  # Shell-agnostic config, loaded by both shells
+│   ├── env                 # Environment variables (KEY=value, one per line)
+│   └── paths               # PATH entries (one per line, appended)
+├── zsh
+│   ├── install.sh          # oh-my-zsh, powerlevel10k, plugins, symlinks
+│   ├── configs             # zsh startup files → symlinked to ~ by basename
+│   │   ├── .zshenv         # Loads shared/env + shared/paths, zsh-only env
+│   │   ├── .zprofile       # Login-shell env (oh-my-zsh path)
+│   │   ├── .zshrc          # Interactive shell configuration
+│   │   └── .p10k.zsh       # Powerlevel10k theme config
+│   └── scripts             # Modules sourced by .zshrc (aliases, functions, ...)
+├── nushell
+│   ├── install.sh          # Symlinks configs into nu's config dir, zoxide setup
+│   └── configs             # → symlinked as a whole to nu's config dir
+│       ├── env.nu          # Loads shared/env + shared/paths (≈ .zshenv)
+│       ├── config.nu       # Interactive config: vi mode, aliases, zoxide (≈ .zshrc)
+│       └── aliases.nu      # Port of zsh/scripts/alias.zsh
+├── installer.sh            # Entry point — auto-detects your shell via $SHELL
+├── mac_default.sh          # macOS default settings
+├── Brewfile                # Homebrew packages
+└── iterm-prof.json         # iTerm2 profile (import manually)
 ```
 
-### Zsh Configuration
+## Shared environment
 
-Zsh files are organized in the `configs/zsh/` directory:
+`shared/env` and `shared/paths` are plain-text files (one entry per line, `$HOME` allowed in values) that **both** shells load at startup:
+
+- **zsh**: `.zshenv` sources them (`set -a` auto-export + a `path+=` loop)
+- **nushell**: `env.nu` parses them (`parse "{k}={v}" | load-env`, `append` to `$env.PATH`)
+
+The rule of thumb: **data is shared, code is per-shell**. Env vars and PATH entries go in `shared/`; anything with shell syntax (aliases, functions, keybindings, prompt) goes in `zsh/scripts/` or `nushell/configs/`.
+
+Note: `DOTFILES` is defined in each shell's startup file (not in `shared/env`) since it's the anchor needed to locate the shared files.
+
+### Zsh startup files
 
 | File | Purpose | Loaded When |
 |------|---------|-------------|
-| `.zshenv` | Environment variables needed everywhere | All shells (login, non-login, interactive, scripts) |
+| `.zshenv` | Shared env/PATH loaders, zsh-only env vars | All shells (login, non-login, interactive, scripts) |
 | `.zprofile` | Environment variables for login sessions | Login shells only |
-| `.zshrc` | Interactive shell config (aliases, functions, plugins) | Interactive shells only |
+| `.zshrc` | Interactive shell config (plugins, prompt, sources `zsh/scripts/`) | Interactive shells only |
 | `.p10k.zsh` | Powerlevel10k theme configuration | Sourced by `.zshrc` |
 
-**Private Environment Variables:**
-- Create `~/.zshenv.local` in your home directory for machine-specific secrets (API keys, etc.)
-- This file is **not** in the repo and won't be committed
-- `.zshenv` automatically sources it if it exists
+### Machine-specific / private files
+
+These live in `$HOME`, are **not** in the repo, and are picked up automatically:
+
+- `~/.zshenv.local` — private env vars for zsh (sourced by `.zshenv`)
+- `~/.env.nu.local` — private env vars for nushell (sourced by `env.nu`)
+- `~/.gitconfig.local` — machine-specific git config, e.g. `user.signingkey` (included via `[include]` in `.gitconfig`)
 
 ## Install
-
-To run the installer:
 
 ```bash
 cd $DOTFILES
 ./installer.sh
 ```
 
-The installer will:
-1. Set up oh-my-zsh and powerlevel10k
-2. Install zsh plugins
-3. Symlink all config files to your home directory
-4. Optionally install system dependencies from Brewfile
-5. Optionally apply macOS default settings
+The installer detects which shell you're running (via `$SHELL`) and sets up that shell. It will:
+
+1. Optionally install system dependencies from the Brewfile
+2. Symlink third-party configs (`configs/`) to your home directory
+3. Run the detected shell's `install.sh` (oh-my-zsh/p10k/plugins for zsh; config symlink + zoxide for nushell)
+4. Optionally apply macOS default settings
+
+It is idempotent — safe to re-run from either shell.
 
 ### Package Management
 
-System dependencies are managed via `Brewfile`. Available functions:
+System dependencies are managed via `Brewfile`. Available functions (in `zsh/scripts/func.zsh`):
 
 ```bash
 # Dump current packages to Brewfile

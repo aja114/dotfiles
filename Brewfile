@@ -57,6 +57,8 @@ brew "transmission-cli"
 brew "tree"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Modern shell with structured data pipelines
+brew "nushell"
 # Command-line interface for Dashlane
 brew "dashlane/tap/dashlane-cli", trusted: true
 # Anthropic's official Claude AI desktop app

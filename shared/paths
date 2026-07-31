@@ -1,0 +1,9 @@
+# Shared PATH entries, appended by both zsh (.zshenv) and nushell (env.nu).
+# One entry per line; $HOME is expanded by both loaders. Order is preserved
+# and duplicates are removed by the loaders.
+
+$HOME/.local/bin
+$HOME/.cargo/bin
+/opt/homebrew/opt/goenv/bin
+/opt/homebrew/bin
+/opt/homebrew/sbin
