@@ -25,7 +25,8 @@ These configurations are made to work with `zsh` as a shell using `oh-my-zsh` as
 │   ├── alias.zsh
 │   ├── func.zsh
 │   ├── history.zsh
-│   └── keybindings.zsh
+│   ├── keybindings.zsh
+│   └── python-setup.zsh
 ├── installer.sh          # Main setup script
 ├── mac_default.sh        # macOS default settings
 ├── Brewfile              # Homebrew packages
