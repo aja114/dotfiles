@@ -24,7 +24,8 @@ symbol = " "
 [directory]
 style = "bold cyan"
 format = "[$path]($style) "
-truncation_length = 8
+truncate_to_repo = false
+truncation_length = 5
 truncation_symbol = "…/"
 
 [git_branch]
