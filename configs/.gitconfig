@@ -1,7 +1,6 @@
 [user]
 	name = AlexAC
 	email = alexandreabouchahine@gmail.com
-    signingkey = /Users/alexandreabouchahine/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/842526d0cb1ee13e5403bd58fff7088e.pub
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -29,3 +28,7 @@
     format = ssh
 [gpg "ssh"]
     allowedSignersFile = ~/.gitallowedsigners
+# Machine-specific settings (e.g. user.signingkey) live in an untracked
+# local file, like .zshenv.local. Included last so it can override.
+[include]
+    path = ~/.gitconfig.local
