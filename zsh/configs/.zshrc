@@ -67,7 +67,7 @@ eval "$(goenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Source all the scripts from our dotfiles
-for script in "${DOTFILES}"/scripts/*(.); do
+for script in "${DOTFILES}"/zsh/scripts/*(.); do
     if [ -f "$script" ]; then
         source "$script"
     fi
@@ -76,8 +76,6 @@ done
 # increase the limit on the number of files open on mac os
 ulimit -n 10240
 
-# Source cargo env
-. "$HOME/.cargo/env"
 
 # Uncomment to see profiling results
 # zprof

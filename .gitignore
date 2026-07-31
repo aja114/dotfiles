@@ -1,0 +1,6 @@
+.DS_Store
+*.swp
+
+# Nushell history lives next to its config (symlinked dir)
+nushell/configs/history.txt
+nushell/configs/history.sqlite3*
