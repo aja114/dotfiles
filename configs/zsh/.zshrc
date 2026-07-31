@@ -1,4 +1,5 @@
-zmodload zsh/zprof
+# Uncomment to start profiling
+# zmodload zsh/zprof
 
 # Load nvm before p10k so it can detect the version
 export NVM_DIR="$HOME/.nvm"
@@ -78,3 +79,7 @@ ulimit -n 10240
 
 # Source cargo env
 . "$HOME/.cargo/env"
+
+# Uncomment to see profiling results
+# zprof
+
