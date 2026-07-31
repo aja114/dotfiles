@@ -30,5 +30,7 @@
     allowedSignersFile = ~/.gitallowedsigners
 # Machine-specific settings (e.g. user.signingkey) live in an untracked
 # local file, like .zshenv.local. Included last so it can override.
+[push]
+    autoSetupRemote = true
 [include]
     path = ~/.gitconfig.local
