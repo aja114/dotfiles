@@ -957,7 +957,7 @@
   # Python virtual environment color.
   typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=255
   typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=67
-  # Don't show Python version next to the virtual environment name.
+  # Show Python version next to the virtual environment name.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
   # If set to "false", won't show virtualenv if pyenv is already shown.
   # If set to "if-different", won't show virtualenv if it's the same as pyenv.
@@ -1060,6 +1060,8 @@
   # Nvm color.
   typeset -g POWERLEVEL9K_NVM_FOREGROUND=0
   typeset -g POWERLEVEL9K_NVM_BACKGROUND=5
+  # Always show node version, even when it matches the nvm default alias.
+  typeset -g POWERLEVEL9K_NVM_PROMPT_ALWAYS_SHOW=true
   # Custom icon.
   typeset -g POWERLEVEL9K_NVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
