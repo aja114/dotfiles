@@ -31,8 +31,14 @@ else
     __dotfile_success "Config linked: $nu_config_dir -> $target"
 fi
 
-# zoxide: generate init script sourced by config.nu. Kept in ~ (not the
-# config dir) so generated files never land inside the dotfiles repo.
+# zoxide/starship: generate init scripts sourced by config.nu. Kept in ~
+# (not the config dir) so generated files never land inside the dotfiles repo.
 __dotfile_info "Generating zoxide init script"
 zoxide init nushell > "$HOME/.zoxide.nu"
+if command -v starship >/dev/null 2>&1; then
+    __dotfile_info "Generating starship init script"
+    starship init nu > "$HOME/.starship.nu"
+else
+    __dotfile_warning "starship not installed, skipping (run the Brewfile step, then re-run this installer)"
+fi
 __dotfile_success "nushell configured"

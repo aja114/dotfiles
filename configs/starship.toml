@@ -1,0 +1,91 @@
+# starship.toml - prompt shared by zsh and nushell (replaces powerlevel10k).
+# Minimal style: colored text only, no powerline segments/icons.
+# Symlinked to ~/starship.toml by installer.sh; both shells point at it via
+# $STARSHIP_CONFIG (shared/env). Docs: https://starship.rs/config/
+
+# Two lines (plus a blank separator):
+#   line 1:  dir, git ............ exit status, cmd duration, jobs, direnv,
+#            lang versions, k8s, time   (right-aligned via $fill)
+#   line 2:  λ prompt char (red on error, V/▶ in vi visual/replace modes)
+# NOTE: everything lives in `format` on purpose - zsh draws a right prompt on
+# the LAST prompt line while nushell draws it on the FIRST, so `right_format`
+# can never look the same in both. $fill right-aligns identically everywhere.
+format = "$shell$directory$git_branch$git_state$git_status$fill$status$cmd_duration$jobs$direnv$python$nodejs$golang$kubernetes$time$line_break$character"
+
+# Which shell this prompt is running in (handy while trialing nushell vs zsh).
+[shell]
+disabled = false
+style = "red"
+format = "[$indicator]($style) "
+
+[fill]
+symbol = " "
+
+[directory]
+style = "bold cyan"
+format = "[$path]($style) "
+truncation_length = 8
+truncation_symbol = "…/"
+
+[git_branch]
+style = "purple"
+format = "[on $branch]($style) "
+
+[git_state]
+style = "purple"
+format = "[$state( $progress_current/$progress_total)]($style) "
+
+[git_status]
+style = "yellow"
+format = '([$conflicted$staged$modified$renamed$deleted$stashed$untracked]($style) [$ahead_behind]($style) )'
+conflicted = "=${count} "
+staged = "+${count} "
+modified = "!${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+stashed = '\$${count} '
+untracked = "?${count} "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕${count} "
+
+# Prompt char: λ + vi-mode indicator, mirroring nushell's defaults
+# (: insert, > normal). Red on error; V/▶ in vi visual/replace (p10k style).
+[character]
+success_symbol = "[λ:](bold green)"
+error_symbol = "[λ:](bold red)"
+vimcmd_symbol = "[λ>](bold green)"
+vimcmd_visual_symbol = "[λV](bold yellow)"
+vimcmd_replace_symbol = "[λ▶](bold purple)"
+vimcmd_replace_one_symbol = "[λ▶](bold purple)"
+
+[status]
+disabled = false
+style = "bold red"
+format = "[$symbol $status]($style) "
+
+[cmd_duration]
+style = "white"
+min_time = 100
+format = "[$duration]($style) "
+
+[direnv]
+disabled = false
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+# python/nodejs/golang cover the old virtualenv/goenv/nvm/asdf segments: they
+# only render inside matching projects, which is usually what you want anyway.
+
+[python]
+style = "green"
+format = "[via ${symbol}${version}( $virtualenv)]($style) "
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+format = "[$time]($style) "
+
+# No starship equivalent for p10k's vim_shell, load and wifi segments.

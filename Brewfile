@@ -55,6 +55,8 @@ brew "tlrc"
 brew "transmission-cli"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Cross-shell prompt (git info etc. out of the box)
+brew "starship"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Modern shell with structured data pipelines
@@ -79,5 +81,6 @@ cask "raspberry-pi-imager"
 cask "rectangle"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
-# Video communication and virtual meeting platform
-cask "zoom"
+
+# Replacement for Docker Desktop
+cask "orbstack"

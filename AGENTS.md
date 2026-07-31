@@ -8,7 +8,7 @@ Personal dotfiles for macOS. Primary shell is `zsh` with `oh-my-zsh` + `powerlev
 
 ## Layout
 
-- `configs/` — third-party dotfiles (git, vim, tmux, …) symlinked verbatim into `$HOME` by basename. Nothing shell-related lives here.
+- `configs/` — third-party dotfiles (git, vim, tmux, …) symlinked verbatim into `$HOME` by basename. Nothing shell-related lives here. Exception: `starship.toml` is the prompt shared by both shells, pointed at by `STARSHIP_CONFIG` in `shared/env`; in zsh the prompt is switchable via `DOTFILES_PROMPT` in `.zshrc` (`starship` default, `p10k` fallback).
 - `shared/` — shell-agnostic config loaded by both shells: `env` (KEY=value per line) and `paths` (PATH entries, one per line). `$HOME` in values is expanded by both loaders.
 - `zsh/` — everything zsh: `install.sh`, `configs/` (`.zshenv`, `.zprofile`, `.zshrc`, `.p10k.zsh`, symlinked into `$HOME` by basename), and `scripts/` (modules sourced by `.zshrc`: aliases, functions, history, keybindings).
 - `nushell/` — everything nushell: `install.sh`, `configs/` (`env.nu`, `config.nu`, `aliases.nu`; the whole dir is symlinked to nu's config dir, e.g. `~/Library/Application Support/nushell` on macOS).
