@@ -10,3 +10,10 @@ source aliases.nu
 # block stay scoped to that block. If a file is missing, re-run the installer.
 source ~/.zoxide.nu
 source ~/.starship.nu
+
+# starship init only blanks PROMPT_INDICATOR (emacs mode). With vi edit mode,
+# reedline would append PROMPT_INDICATOR_VI_INSERT/VI_NORMAL (defaults ": " /
+# "> ") after the prompt. Blank them: starship's character module already
+# renders an equivalent trailing indicator (see starship.toml), shared by zsh.
+$env.PROMPT_INDICATOR_VI_INSERT = ""
+$env.PROMPT_INDICATOR_VI_NORMAL = ""
