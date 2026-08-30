@@ -1,8 +1,6 @@
 tap "dashlane/tap"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # Modern, maintained replacement for ls
@@ -84,3 +82,5 @@ cask "secretive"
 
 # Replacement for Docker Desktop
 cask "orbstack"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"

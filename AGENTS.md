@@ -12,6 +12,7 @@ Personal dotfiles for macOS. Primary shell is `zsh` with `oh-my-zsh` + `powerlev
 - `shared/` — shell-agnostic config loaded by both shells: `env` (KEY=value per line) and `paths` (PATH entries, one per line). `$HOME` in values is expanded by both loaders.
 - `zsh/` — everything zsh: `install.sh`, `configs/` (`.zshenv`, `.zprofile`, `.zshrc`, `.p10k.zsh`, symlinked into `$HOME` by basename), and `scripts/` (modules sourced by `.zshrc`: aliases, functions, history, keybindings).
 - `nushell/` — everything nushell: `install.sh`, `configs/` (`env.nu`, `config.nu`, `aliases.nu`; the whole dir is symlinked to nu's config dir, e.g. `~/Library/Application Support/nushell` on macOS).
+- `nvim/` — everything neovim: `install.sh`, `configs/` (LazyVim config; the whole dir is symlinked to `~/.config/nvim`).
 - `installer.sh` — entry point. Auto-detects the current shell via `$SHELL` (fails if not zsh/nu), symlinks `configs/`, then sources the matching `<shell>/install.sh`. Idempotent.
 - `mac_default.sh` — `defaults write` tweaks for macOS.
 - `utils.zsh` — internal helpers (`__dotfile_*` logging/functions) for installer scripts only; refuses to load in interactive shells.

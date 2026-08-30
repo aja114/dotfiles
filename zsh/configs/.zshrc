@@ -1,10 +1,6 @@
 # Uncomment to start profiling
 # zmodload zsh/zprof
 
-# Load nvm early so tools (and the prompt) can detect the version
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-
 # Prompt selection: "starship"  or "p10k" 
 export DOTFILES_PROMPT=starship
 
@@ -14,9 +10,19 @@ else
   ZSH_THEME=""
 fi
 
+# zsh-nvm lazy-loads nvm on first use of node/npm/npx/nvm instead of at
+# startup (NVM_LAZY_LOAD=true is set in .zshenv). Additionally, always have
+# node on PATH (so Neovim etc. find it without a shell) by pointing at the
+# newest installed version directly - no nvm.sh parsing, ~0ms cost.
+export NVM_DIR="$HOME/.nvm"
+_nvm_latest=("$NVM_DIR"/versions/node/*(N/On[1]))
+(( $#_nvm_latest )) && path=("$_nvm_latest[1]/bin" $path)
+unset _nvm_latest
+
 # Which plugins would you like to load?
 plugins=(
 zsh-autosuggestions
+zsh-nvm
 terraform
 git
 vi-mode
@@ -65,8 +71,16 @@ fi
 # Add zoxide command to easily switch directories
 eval "$(zoxide init zsh)"
 
-# Init goenv
-eval "$(goenv init -)"
+# goenv: put shims on PATH directly (~0ms) so go/gofmt/gopls/dlv resolve in any
+# process (Neovim, editors) without shell init. The full `goenv init` (~60ms:
+# PATH surgery + rehash + shell wrapper) only runs on first `goenv` command.
+# GOENV_ROOT is set in shared/env; nushell gets the shims via shared/paths.
+path=("$GOENV_ROOT/shims" $path)
+goenv() {
+  unfunction goenv
+  eval "$(command goenv init -)"
+  goenv "$@"
+}
 
 # activate fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

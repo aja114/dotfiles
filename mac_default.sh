@@ -7,12 +7,12 @@ source "$DOTFILES/utils.zsh"
 set +e
 
 disable_agent() {
-	mv "$1" "$1_DISABLED" >/dev/null 2>&1 ||
-	sudo mv "$1" "$1_DISABLED" >/dev/null 2>&1
+  mv "$1" "$1_DISABLED" >/dev/null 2>&1 ||
+    sudo mv "$1" "$1_DISABLED" >/dev/null 2>&1
 }
 
 unload_agent() {
-	launchctl unload -w "$1" >/dev/null 2>&1
+  launchctl unload -w "$1" >/dev/null 2>&1
 }
 
 echo -e "${__dotfile_yellow}  → Show hidden files by default in Finder${__dotfile_nc}"

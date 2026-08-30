@@ -4,6 +4,7 @@
 alias clear="printf '\33c\e[3J'"
 alias cl=clear
 alias v='nvim'
+alias vim='nvim'
 alias s='ssh'
 alias reloadsh='exec "$SHELL" -l'
 

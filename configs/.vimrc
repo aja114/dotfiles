@@ -82,7 +82,9 @@ inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
 " Set background and text style 
-set term=xterm-256color
+if !has('nvim')
+  set term=xterm-256color
+endif
 set background=dark
 
 " Enable to use the usual clipboard

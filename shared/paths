@@ -4,6 +4,9 @@
 
 $HOME/.local/bin
 $HOME/.cargo/bin
+# goenv shims: make go/gofmt/gopls/dlv resolve without `goenv init` (~60ms).
+# zsh re-prepends them in .zshrc to guarantee priority; here they serve nushell.
+$HOME/.goenv/shims
 /opt/homebrew/opt/goenv/bin
 /opt/homebrew/bin
 /opt/homebrew/sbin
