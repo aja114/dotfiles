@@ -31,7 +31,7 @@ if [[ -z $target ]]; then
 fi
 __dotfile_info "Detected shell: $target"
 
-__dotfile_section_header "System Dependencies" 1 4
+__dotfile_section_header "System Dependencies" 1 5
 read -p "  Install system-level packages from Brewfile? [y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -42,7 +42,7 @@ else
     __dotfile_skip "system dependencies"
 fi
 
-__dotfile_section_header "Shared Configuration Files" 2 4
+__dotfile_section_header "Shared Configuration Files" 2 5
 __dotfile_info "Symlinking third-party config files to ~/"
 find $DOTFILES/configs -maxdepth 1 -type f | while read -r f; do
     ln -sf "$f" "$HOME/$(basename "$f")"
@@ -50,12 +50,15 @@ done
 touch $HOME/.hushlogin
 __dotfile_success "Shared config files linked"
 
-__dotfile_section_header "Shell Setup" 3 4
+__dotfile_section_header "Shell Setup" 3 5
 shell_dir=$target
 [[ $target == nu ]] && shell_dir=nushell
 source $DOTFILES/$shell_dir/install.sh
 
-__dotfile_section_header "macOS Settings" 4 4
+__dotfile_section_header "Neovim" 4 5
+source $DOTFILES/nvim/install.sh
+
+__dotfile_section_header "macOS Settings" 5 5
 read -p "  Apply macOS default settings? [y/N] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then

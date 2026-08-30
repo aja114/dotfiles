@@ -21,6 +21,15 @@ $env.PATH = ($env.PATH | append (
     | each { |line| $line | str replace --all "$HOME" $env.HOME }
 ) | uniq)
 
+# Newest nvm-installed node on PATH (~0ms, no version-manager init). nvm itself
+# is zsh-only; nu just needs the binaries, for itself and for spawned tools
+# (e.g. Neovim's node provider). zsh does the equivalent via glob in .zshrc.
+let node_versions = ($env.HOME | path join ".nvm" "versions" "node")
+if ($node_versions | path exists) {
+    let latest_bin = (ls $node_versions | sort-by --natural { path basename } | last | get name | path join "bin")
+    $env.PATH = ($env.PATH | prepend $latest_bin)
+}
+
 # Machine-local overrides, if they exist (same pattern as .zshenv.local).
 # Env vars only — defs/aliases would not escape the if-block's scope.
 const local_env = "~/.env.nu.local"
