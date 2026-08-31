@@ -12,3 +12,11 @@ vim.keymap.set("x", "d", '"_d')
 vim.keymap.set("n", "c", '"_c')
 vim.keymap.set("n", "C", '"_C')
 vim.keymap.set("x", "c", '"_c')
+
+-- Save-all: :w writes every modified buffer (like :wall), so format-on-save
+-- runs everywhere. Only expands when the cmdline is exactly "w", so
+-- :w <file>, :wq, visual :'<,'>w etc. are unaffected.
+vim.cmd([[cnoreabbrev <expr> w (getcmdtype() == ':' && getcmdline() ==# 'w') ? 'wall' : 'w']])
+
+-- Override LazyVim's <C-s> ("Save File") to save all buffers.
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>wall<cr><esc>", { desc = "Save All Files" })
