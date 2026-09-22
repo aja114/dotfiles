@@ -45,8 +45,6 @@ brew "rsync"
 brew "slides"
 # Tool Command Language
 brew "tcl-tk"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # Official tldr client written in Rust
 brew "tlrc"
 # Lightweight BitTorrent client
@@ -73,8 +71,6 @@ cask "karabiner-elements"
 cask "maccy"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Imaging utility to install operating systems to a microSD card
-cask "raspberry-pi-imager"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Store SSH keys in the Secure Enclave

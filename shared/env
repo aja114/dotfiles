@@ -1,0 +1,23 @@
+# Shared environment variables, loaded by both zsh (.zshenv) and nushell (env.nu).
+# Format: KEY=value, one per line. $HOME in values is expanded by both loaders.
+# NOTE: DOTFILES is deliberately NOT set here — each shell defines it first as
+# the bootstrap anchor needed to locate this file.
+
+EDITOR=vim
+# Prompt config shared by zsh and nushell (configs/starship.toml, symlinked to ~)
+STARSHIP_CONFIG=$HOME/starship.toml
+OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+no_proxy=*
+HOMEBREW_NO_AUTO_UPDATE=1
+
+# Secretive SSH agent
+SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
+# Go (shims work without `goenv init` as long as this points at the root)
+GOENV_ROOT=$HOME/.goenv
+
+# Python
+PYTHONDONTWRITEBYTECODE=1
+PYTHONBREAKPOINT=ipdb.set_trace
+PIP_REQUIRE_VIRTUALENV=true
+UV_PYTHON_DOWNLOADS=never
