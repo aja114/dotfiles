@@ -80,3 +80,5 @@ cask "secretive"
 cask "orbstack"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Fonts
+cask "font-meslo-lg-nerd-font"
