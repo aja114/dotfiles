@@ -334,7 +334,7 @@
     "Blue Component" : 0.45882352941176469,
     "Green Component" : 0.43137254901960786
   },
-  "Normal Font" : "MesloLGS-NF-Regular 13",
+  "Normal Font" : "MesloLGMNF-Regular 13",
   "Use Selected Text Color (Dark)" : true,
   "Has Hotkey" : false,
   "Foreground Color" : {
@@ -958,7 +958,7 @@
     "Blue Component" : 0.45882352941176469,
     "Green Component" : 0.43137254901960786
   },
-  "Normal Font" : "MesloLGS-NF-Regular 13",
+  "Normal Font" : "MesloLGLNF-Regular 11",
   "Use Selected Text Color (Dark)" : true,
   "Has Hotkey" : false,
   "Foreground Color" : {
@@ -1577,7 +1577,7 @@
     "Blue Component" : 0.45882352941176469,
     "Green Component" : 0.43137254901960786
   },
-  "Normal Font" : "MesloLGS-NF-Regular 13",
+  "Normal Font" : "MesloLGLNF-Regular 11",
   "Use Selected Text Color (Dark)" : true,
   "Foreground Color" : {
     "Red Component" : 0.86197912693023682,
@@ -2200,7 +2200,7 @@
     "Blue Component" : 0.45882352941176469,
     "Green Component" : 0.43137254901960786
   },
-  "Normal Font" : "MesloLGS-NF-Regular 13",
+  "Normal Font" : "MesloLGLNF-Regular 11",
   "Use Selected Text Color (Dark)" : true,
   "Foreground Color" : {
     "Red Component" : 0.86197912693023682,
