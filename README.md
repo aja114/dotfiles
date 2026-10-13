@@ -34,6 +34,10 @@ Supports two shells: `zsh` (primary, with `oh-my-zsh`) and `nushell` (trial). Th
 │       ├── env.nu          # Loads shared/env + shared/paths (≈ .zshenv)
 │       ├── config.nu       # Interactive config: vi mode, aliases, zoxide (≈ .zshrc)
 │       └── aliases.nu      # Port of zsh/scripts/alias.zsh
+├── agents                  # Shared by claude, codex and pi
+│   ├── install.sh          # Symlinks AGENTS.md + each skill into the tools' dirs
+│   ├── AGENTS.md           # → ~/.claude/CLAUDE.md, ~/.codex/AGENTS.md, ~/.pi/agent/AGENTS.md
+│   └── skills              # Each skill dir → ~/.claude/skills/, ~/.agents/skills/ (codex + pi)
 ├── installer.sh            # Entry point — auto-detects your shell via $SHELL
 ├── mac_default.sh          # macOS default settings
 ├── Brewfile                # Homebrew packages
@@ -80,7 +84,8 @@ The installer detects which shell you're running (via `$SHELL`) and sets up that
 1. Optionally install system dependencies from the Brewfile
 2. Symlink third-party configs (`configs/`) to your home directory
 3. Run the detected shell's `install.sh` (oh-my-zsh/p10k/plugins for zsh; config symlink + zoxide for nushell)
-4. Optionally apply macOS default settings
+4. Link the neovim config and the shared AI agent instructions/skills (`agents/`)
+5. Optionally apply macOS default settings
 
 It is idempotent — safe to re-run from either shell.
 

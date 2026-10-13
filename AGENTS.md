@@ -13,6 +13,7 @@ Personal dotfiles for macOS. Primary shell is `zsh` with `oh-my-zsh` + `powerlev
 - `zsh/` — everything zsh: `install.sh`, `configs/` (`.zshenv`, `.zprofile`, `.zshrc`, `.p10k.zsh`, symlinked into `$HOME` by basename), and `scripts/` (modules sourced by `.zshrc`: aliases, functions, history, keybindings).
 - `nushell/` — everything nushell: `install.sh`, `configs/` (`env.nu`, `config.nu`, `aliases.nu`; the whole dir is symlinked to nu's config dir, e.g. `~/Library/Application Support/nushell` on macOS).
 - `nvim/` — everything neovim: `install.sh`, `configs/` (LazyVim config; the whole dir is symlinked to `~/.config/nvim`).
+- `agents/` — global AI agent config shared by claude, codex and pi: `AGENTS.md` (symlinked to `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, `~/.pi/agent/AGENTS.md`) and `skills/` (each skill dir symlinked individually into `~/.claude/skills/` and `~/.agents/skills/` — the latter is read by both codex and pi; whole-dir links are avoided because the tools keep managed content in their own skills dirs). Linked by `agents/install.sh`.
 - `installer.sh` — entry point. Auto-detects the current shell via `$SHELL` (fails if not zsh/nu), symlinks `configs/`, then sources the matching `<shell>/install.sh`. Idempotent.
 - `mac_default.sh` — `defaults write` tweaks for macOS.
 - `utils.zsh` — internal helpers (`__dotfile_*` logging/functions) for installer scripts only; refuses to load in interactive shells.
