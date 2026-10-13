@@ -92,6 +92,9 @@ for script in "${DOTFILES}"/zsh/scripts/*(.); do
     fi
 done
 
+# Load machine dependent zsh initialisation
+source ~/.zshrc.local
+
 # increase the limit on the number of files open on mac os
 ulimit -n 10240
 
